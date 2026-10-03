@@ -1,0 +1,35 @@
+using System;
+using UnityEngine;
+
+namespace _Project.Scripts.Services.PlayerInput
+{
+    public class DesktopInputService : IInputService
+    {
+        public event Action OnOpenStatsButtonPressed;
+        public event Action OnMainMenuButtonPressed;
+
+        public void Tick()
+        {
+            if(IsOpenStatsButtonPressed())
+                OnOpenStatsButtonPressed?.Invoke();
+            
+            if (IsMainMenuButtonPressed()) 
+                OnMainMenuButtonPressed?.Invoke();
+        }
+
+        public Vector2 GetMovementAxis() => 
+            new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        public Vector2 GetLookAxis() => 
+            new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+        public bool IsFireButtonPressed() => 
+            Input.GetButton("Fire1");
+        
+        public bool IsOpenStatsButtonPressed() => 
+            Input.GetKeyDown(KeyCode.Tab);
+
+        public bool IsMainMenuButtonPressed() => 
+            Input.GetKeyDown(KeyCode.Space);
+    }
+}
