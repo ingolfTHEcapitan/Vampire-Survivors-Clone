@@ -1,6 +1,5 @@
 ﻿using System;
 using _Project.Scripts.UI.Common;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.Scripts.UI.Windows.GameOver

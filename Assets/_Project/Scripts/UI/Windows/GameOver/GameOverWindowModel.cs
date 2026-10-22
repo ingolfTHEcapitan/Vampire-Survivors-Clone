@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 
 namespace _Project.Scripts.UI.Windows.GameOver
 {
-    public class GameOverWindowModel: IDisposable
+    public class GameOverWindowModel : IDisposable
     {
         private readonly IGamePauseService _pauseService;
         private readonly ISceneLoaderService _sceneLoader;

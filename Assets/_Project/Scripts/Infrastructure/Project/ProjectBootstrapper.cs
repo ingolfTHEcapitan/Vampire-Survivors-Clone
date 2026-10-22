@@ -4,7 +4,7 @@ using Zenject;
 
 namespace _Project.Scripts.Infrastructure.Project
 {
-    public class ProjectBootstrapper: IInitializable
+    public class ProjectBootstrapper : IInitializable
     {
         public ProjectBootstrapper()
         {

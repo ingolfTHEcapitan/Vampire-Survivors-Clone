@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Project.Scripts.Infrastructure.MainMenu
 {
-    public class MainMenuBootstrapper: IInitializable
+    public class MainMenuBootstrapper : IInitializable
     {
         public MainMenuBootstrapper()
         {
