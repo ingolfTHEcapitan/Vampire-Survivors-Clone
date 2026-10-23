@@ -9,27 +9,24 @@ namespace _Project.Scripts.UI.Common
 	{
 		[SerializeField] private AudioClip _pointerDown;
 		[SerializeField] private AudioClip _pointerEnter;
-		[SerializeField] private AudioSource _audioSource;
+		[SerializeField] private AudioSource _uiAudioSource;
 		
 		private IAudioService _audioService;
 
 		[Inject]
 		private void Construct(IAudioService audioService) => 
 			_audioService = audioService;
-
-		public void Initialize(AudioSource audioSource) => 
-			_audioSource = audioSource;
-
+		
 		public void OnPointerDown(PointerEventData eventData)
 		{
 			if (_pointerDown != null) 
-				_audioService.PlayOneShot(_pointerDown, _audioSource);
+				_audioService.PlayOneShot(_pointerDown, _uiAudioSource);
 		}
 
 		public void OnPointerEnter(PointerEventData eventData)
 		{
 			if (_pointerEnter != null) 
-				_audioService.PlayOneShot(_pointerEnter, _audioSource);
+				_audioService.PlayOneShot(_pointerEnter, _uiAudioSource);
 		}
 	}
 }

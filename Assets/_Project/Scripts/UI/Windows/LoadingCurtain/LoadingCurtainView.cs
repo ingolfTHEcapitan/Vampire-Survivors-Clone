@@ -9,9 +9,6 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
     {
         public event Action OnWindowDestroy;
         
-        [SerializeField] private GameObject _loadingIndicator;
-        [SerializeField] private float _indicatorRotationSpeed = 100f;
-        
         [Header("Audio")]
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _loadingMusic;
@@ -39,11 +36,5 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
             gameObject.SetActive(false);
             _audioService.Stop(_audioSource);
         }
-
-        private void Update() => 
-            AnimateLoadingIndicator();
-
-        private void AnimateLoadingIndicator() => 
-            _loadingIndicator.transform.Rotate(Vector3.forward, Time.deltaTime * _indicatorRotationSpeed);
     }
 }
