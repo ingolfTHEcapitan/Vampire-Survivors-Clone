@@ -14,8 +14,8 @@ namespace _Project.Scripts.UI.Windows.MainMenu
         private readonly SettingsWindowPresenter _settingsWindowPresenter;
         private readonly CursorController _cursorController;
         
-        public MainMenuWindowPresenter(MainMenuWindowView view, MainMenuWindowModel model, LoadingCurtainPresenter loadingCurtainPresenter
-            , SettingsWindowPresenter settingsWindowPresenter, CursorController cursorController)
+        public MainMenuWindowPresenter(MainMenuWindowView view, MainMenuWindowModel model, LoadingCurtainPresenter loadingCurtainPresenter,
+            SettingsWindowPresenter settingsWindowPresenter, CursorController cursorController)
         {
             _view = view;
             _model = model;
@@ -48,7 +48,6 @@ namespace _Project.Scripts.UI.Windows.MainMenu
         {
             _cursorController.SetCursorVisible(false);
             _loadingCurtainPresenter.ShowLoading();
-            _view.StopBackgroundMusic();
             _model.LoadGameplaySceneAsync().Forget(Debug.LogError);
         }
 

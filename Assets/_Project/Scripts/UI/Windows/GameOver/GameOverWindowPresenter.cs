@@ -23,12 +23,33 @@ namespace _Project.Scripts.UI.Windows.GameOver
             _model.Initialize();
 
             _view.OnWindowDestroy += CleanUp;
+            _view.OnLoadSaveButtonClicked += LoadSave;
+            _model.OnPlayerDied += Open;
         }
 
         private void CleanUp()
         {
             _view.OnWindowDestroy -= CleanUp;
+            _view.OnLoadSaveButtonClicked -= LoadSave;
+            _model.OnPlayerDied -= Open;
             _model.Dispose();
+        }
+
+        private async void LoadSave()
+        {
+            try
+            {
+                await _view.CloseAsync();
+                _model.SetPaused(false);
+                _cursorController.SetCursorVisible(true);
+                
+                _cursorController.SetCursorVisible(false);
+                await _model.ReloadSceneAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
         
         private async void Open()

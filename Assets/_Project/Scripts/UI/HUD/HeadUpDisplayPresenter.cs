@@ -13,8 +13,8 @@ namespace _Project.Scripts.UI.HUD
         private readonly HeadUpDisplayModel _model;
         private readonly HeadUpDisplayView _view;
 
-        public HeadUpDisplayPresenter(HeadUpDisplayModel model, HeadUpDisplayView view,
-            IInputService inputService, CursorController cursorController)
+        public HeadUpDisplayPresenter(HeadUpDisplayModel model, HeadUpDisplayView view, IInputService inputService, 
+            CursorController cursorController)
         {
             _model = model;
             _view = view;
@@ -38,6 +38,9 @@ namespace _Project.Scripts.UI.HUD
 
         private void BackToOnMainMenu()
         {
+            if (_model.GameIsPaused)
+                return;
+            
             _cursorController.SetCursorVisible(visible: false);
             _model.LoadMainMenuAsync().Forget(Debug.LogError);
         }

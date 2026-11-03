@@ -1,5 +1,6 @@
 using System;
-using _Project.Scripts.Services.Sound;
+using _Project.Scripts.Services;
+using _Project.Scripts.Services.Audio;
 using UnityEngine;
 using Zenject;
 
@@ -9,14 +10,16 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
     {
         public event Action OnWindowDestroy;
         
+        [SerializeField] private GameObject _loadingIndicator;
+        [SerializeField] private float _indicatorRotationSpeed = 100f;
+        
         [Header("Audio")]
-        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _loadingMusic;
         
-        private IAudioService _audioService;
+        private IMusicService _audioService;
 
         [Inject]
-        private void Construct(IAudioService audioService) => 
+        private void Construct(IMusicService audioService) => 
             _audioService = audioService;
 
         private void Awake() => 
@@ -28,13 +31,16 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
         public void Open()
         {
             gameObject.SetActive(true);
-            _audioService.Play(_loadingMusic, _audioSource);
+            _audioService.PlayMusic(_loadingMusic);
         }
 
-        public void Close()
-        {
+        public void Close() => 
             gameObject.SetActive(false);
-            _audioService.Stop(_audioSource);
-        }
+
+        private void Update() => 
+            AnimateLoadingIndicator();
+
+        private void AnimateLoadingIndicator() => 
+            _loadingIndicator.transform.Rotate(Vector3.forward, Time.deltaTime * _indicatorRotationSpeed);
     }
 }

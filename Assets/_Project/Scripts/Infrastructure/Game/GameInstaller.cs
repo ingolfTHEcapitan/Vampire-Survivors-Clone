@@ -1,13 +1,74 @@
+using _Project.Scripts.Logic.Player;
+using _Project.Scripts.Logic.Spawners;
+using _Project.Scripts.Services;
+using _Project.Scripts.Services.GamePause;
+using _Project.Scripts.Tools;
+using _Project.Scripts.UI.Common.HealthBar;
+using _Project.Scripts.UI.HUD;
+using _Project.Scripts.UI.Windows.GameOver;
+using UnityEngine;
 using Zenject;
 
 namespace _Project.Scripts.Infrastructure.Game
 {
     public class GameInstaller : MonoInstaller
     {
+        [Header("Transforms")]
+        [SerializeField] private Transform _dynamicObjectsParent;
+        [SerializeField] private Transform _uiParent;
+        [SerializeField] private Transform _gameParent;
+        [SerializeField] private Transform _enemySpawnPoint;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClip _gameplayMusic;
+        
         public override void InstallBindings()
         {
-           
+            BindServices();
+            BindPlayer();
+            BindHeadUpDisplay();
+            BindHealthBarFactory();
+            BindGameOverWindow();
+            BindGame();
+        }
+
+        private void BindServices()
+        {
+            Container.BindInterfacesAndSelfTo<GamePauseService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EffectsService>().AsSingle();
         }
         
+        private void BindHealthBarFactory() => 
+            Container.Bind<HealthBarFactory>().AsSingle();
+
+        private void BindPlayer()
+        {
+            Container.BindInterfacesAndSelfTo<PlayerFactory>().AsSingle().WithArguments(_gameParent);
+            Container.Bind<PlayerSpawner>().AsSingle();
+            Container.Bind<PlayerContainer>().FromMethod(GetPlayer).AsSingle();
+        }
+        
+        private void BindHeadUpDisplay()
+        {
+            Container.BindWindow<HeadUpDisplayView>();
+            Container.BindInterfacesAndSelfTo<HeadUpDisplayModel>().AsSingle();
+            Container.Bind<HeadUpDisplayPresenter>().AsSingle();
+        }
+
+        private void BindGameOverWindow()
+        {
+            Container.BindWindow<GameOverWindowView>();
+            Container.Bind<GameOverWindowModel>().AsSingle();
+            Container.Bind<GameOverWindowPresenter>().AsSingle();
+        }
+        
+        private void BindGame()
+        {
+            Container.Bind<GameUIInitializer>().AsSingle().WithArguments(_uiParent);
+            Container.BindInterfacesAndSelfTo<GameBootstrapper>().AsSingle().WithArguments(_enemySpawnPoint, _gameplayMusic);
+        }
+        
+        private PlayerContainer GetPlayer(InjectContext context) => 
+            context.Container.Resolve<PlayerFactory>().GetPlayer();
     }
 }
