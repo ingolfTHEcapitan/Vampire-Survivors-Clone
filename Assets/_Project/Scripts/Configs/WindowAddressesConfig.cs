@@ -6,6 +6,7 @@ using _Project.Scripts.UI.Windows;
 using _Project.Scripts.UI.Windows.GameOver;
 using _Project.Scripts.UI.Windows.LoadingCurtain;
 using _Project.Scripts.UI.Windows.MainMenu;
+using _Project.Scripts.UI.Windows.Online;
 using _Project.Scripts.UI.Windows.Settings;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace _Project.Scripts.Configs
             {typeof(LoadingCurtainView), AssetAddress.LoadingCurtain},
             {typeof(MainMenuWindowView), AssetAddress.MainMenuWindow},
             {typeof(SettingsWindowView), AssetAddress.SettingsWindow},
+            {typeof(OnlineWindowView), AssetAddress.OnlineWindow},
         };
 
         public string GetAssetAddress<TWindow>() where TWindow : Component, IWindow

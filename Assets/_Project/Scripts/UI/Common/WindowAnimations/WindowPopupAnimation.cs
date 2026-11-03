@@ -2,9 +2,9 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace _Project.Scripts.UI.Common
+namespace _Project.Scripts.UI.Common.WindowAnimations
 {
-    public class WindowPopupAnimation : MonoBehaviour
+    public class WindowPopupAnimation : WindowAnimationBase
     {
         [Header("Scale Animation")]
         [SerializeField] private Transform _transform;
@@ -22,7 +22,7 @@ namespace _Project.Scripts.UI.Common
         private void OnDestroy() => 
             KillAnimationIfActive();
 
-        public async UniTask AnimateOpenAsync()
+        public override async UniTask AnimateOpenAsync()
         {
             KillAnimationIfActive();
             
@@ -32,7 +32,7 @@ namespace _Project.Scripts.UI.Common
                 .Join(_transform.DOScale(Vector3.one, _animationDuration).From(_animationStartScale).SetEase(_openEase));
         }
 
-        public async UniTask AnimateCloseAsync()
+        public override async UniTask AnimateCloseAsync()
         {
             KillAnimationIfActive();
             

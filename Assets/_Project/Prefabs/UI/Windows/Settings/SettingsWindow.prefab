@@ -562,7 +562,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8916053333276471034, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2340605709084246055}
+    - targetCorrespondingSourceObject: {fileID: 8916053333276471034, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7403994168133768704}
   m_SourcePrefab: {fileID: 100100000, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
+--- !u!82 &3419891915190561420 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1160158606305642575, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
+  m_PrefabInstance: {fileID: 4570119569160282819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4949214160796573780 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8918103106667987607, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
@@ -585,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbe19db03aaa1c40b19c3694b40c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windowAnimation: {fileID: 0}
+  _windowAnimation: {fileID: 7403994168133768704}
   _windowContent: {fileID: 7683759245986794481}
   _closeButton: {fileID: 6402633257035693697}
   _applyButton: {fileID: 5563003534162588683}
@@ -594,6 +602,18 @@ MonoBehaviour:
   _effectsSlider: {fileID: 6640738895196298224}
   _uiSlider: {fileID: 6342879227022100040}
   _audioMixer: {fileID: 24100000, guid: c15353fd9c22763409f7c656640b830d, type: 2}
+--- !u!114 &7403994168133768704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958600408248192057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f621ba7818b947c3a5677539ab0eceaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7683759245986794481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6182986928170117426, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
@@ -714,6 +734,10 @@ PrefabInstance:
     - target: {fileID: 6964116178326780337, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126012699885711321, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
+      propertyPath: m_Name
+      value: Master Slider
       objectReference: {fileID: 0}
     - target: {fileID: 7702566733295250749, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
@@ -836,6 +860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Close Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7731809572982326189, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 3419891915190561420}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -972,6 +1000,10 @@ PrefabInstance:
     - target: {fileID: 6964116178326780337, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126012699885711321, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
+      propertyPath: m_Name
+      value: Music Slider
       objectReference: {fileID: 0}
     - target: {fileID: 7702566733295250749, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1124,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7126012699885711321, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
+      propertyPath: m_Name
+      value: UI Slider
+      objectReference: {fileID: 0}
     - target: {fileID: 7702566733295250749, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1275,6 +1311,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7126012699885711321, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
+      propertyPath: m_Name
+      value: FX Slider
+      objectReference: {fileID: 0}
     - target: {fileID: 7702566733295250749, guid: 9378efc48f57b87499dedb09560c9932, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1392,6 +1432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6557457045532107311, guid: ec20d3655be93704593929bbb821acc3, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 3419891915190561420}
     - target: {fileID: 7323840278655449477, guid: ec20d3655be93704593929bbb821acc3, type: 3}
       propertyPath: m_text
       value: Apply

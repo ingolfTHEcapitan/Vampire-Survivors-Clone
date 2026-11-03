@@ -5,12 +5,14 @@ using _Project.Scripts.Services;
 using _Project.Scripts.Services.Audio;
 using _Project.Scripts.Services.PlayerInput;
 using _Project.Scripts.Services.SaveLoad;
+using _Project.Scripts.Services.SaveLoad.LocalSave;
 using _Project.Scripts.Services.SceneLoader;
 using _Project.Scripts.Tools;
 using _Project.Scripts.UI;
 using _Project.Scripts.UI.Common;
 using _Project.Scripts.UI.Windows.LoadingCurtain;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Project.Scripts.Infrastructure.Project
@@ -19,6 +21,8 @@ namespace _Project.Scripts.Infrastructure.Project
     {
         [Header("Audio")] 
         [SerializeField] private AudioSource _musicAudioSource;
+        [SerializeField] private PlayerSpawnerConfig _playerSpawnerConfig;
+        [FormerlySerializedAs("_localSaveServiceConfig")] [SerializeField] private LocalSaveTypeConfig localSaveTypeConfig;
         
         public override void InstallBindings()
         {
@@ -31,8 +35,8 @@ namespace _Project.Scripts.Infrastructure.Project
         private void BindConfigs()
         {
             Container.Bind<WindowAddressesConfig>().AsSingle();
-            Container.Bind<PlayerSpawnerConfig>().AsSingle();
-            Container.Bind<LocalSaveServiceConfig>().AsSingle();
+            Container.Bind<PlayerSpawnerConfig>().FromInstance(_playerSpawnerConfig).AsSingle();
+            Container.Bind<LocalSaveTypeConfig>().FromInstance(localSaveTypeConfig).AsSingle();
         }
         
         private void BindServices()
@@ -46,7 +50,8 @@ namespace _Project.Scripts.Infrastructure.Project
             Container.BindInterfacesAndSelfTo<WindowsRepository>().AsSingle();
             Container.BindInterfacesAndSelfTo<WindowFactory>().AsSingle();
 
-            Container.Bind<ISaveLoadService>().WithId(SaveType.Local).FromMethod(GetLocalSaveInstance).AsCached();
+            Container.Bind<LocalSaveTypeProvider>().AsSingle();
+            Container.Bind<ISaveLoadService>().FromMethod(GetLocalSaveInstance).AsCached();
             
             Container.BindInterfacesAndSelfTo<AudioService>().AsSingle().WithArguments(_musicAudioSource);
         }
@@ -61,6 +66,6 @@ namespace _Project.Scripts.Infrastructure.Project
             Container.BindInterfacesAndSelfTo<ProjectBootstrapper>().AsSingle();
 
         private ISaveLoadService GetLocalSaveInstance(InjectContext context) => 
-            context.Container.Resolve<LocalSaveServiceConfig>().GetInstance();
+            context.Container.Resolve<LocalSaveTypeProvider>().GetInstance();
     }
 }

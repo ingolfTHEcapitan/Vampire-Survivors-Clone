@@ -10,30 +10,10 @@ namespace _Project.Scripts.UI.HUD
 {
     public class HeadUpDisplayModel
     {
-        private readonly LoadingCurtainPresenter _loadingCurtainPresenter;
-        private readonly SceneLoaderService _sceneLoader;
-        private readonly IGamePauseService _pauseService;
-        private readonly ISaveLoadService _saveLoadService;
-        private readonly ProgressService _progressService;
+        public HeadUpDisplayModel()
+        {
+            
+        }
         
-        public bool GameIsPaused => _pauseService.IsPaused;
-
-        public HeadUpDisplayModel(LoadingCurtainPresenter loadingCurtainPresenter, SceneLoaderService sceneLoader,
-            IGamePauseService pauseService, [Inject(Id = SaveType.Coordinator)]ISaveLoadService saveLoadService, 
-            ProgressService progressService)
-        {
-            _loadingCurtainPresenter = loadingCurtainPresenter;
-            _sceneLoader = sceneLoader;
-            _pauseService = pauseService;
-            _saveLoadService = saveLoadService;
-            _progressService = progressService;
-        }
-
-        public async UniTask LoadMainMenuAsync()
-        {
-            _loadingCurtainPresenter.ShowLoading();
-            await _saveLoadService.SaveProgressAsync(_progressService.PlayerProgress);
-            await _sceneLoader.LoadAsync(buildIndex: (int)SceneName.MainMenu);
-        }
     }
 }

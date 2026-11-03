@@ -271,8 +271,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632708724036208519, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
       propertyPath: m_Name
-      value: Exit Button
+      value: Quit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7731809572982326189, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 5629641802379039440}
     - target: {fileID: 7731809572982326189, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
       propertyPath: _uiAudioSource
       value: 
@@ -287,6 +291,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 179491201252735462, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
   m_PrefabInstance: {fileID: 2495385693297782358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4501258785383421668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2078071570784958642, guid: dddef456876d2124ea43e7a557d68ab4, type: 3}
+  m_PrefabInstance: {fileID: 2495385693297782358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6789518933592103583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -401,7 +416,7 @@ PrefabInstance:
       addedObject: {fileID: 7408247202869647792}
     - targetCorrespondingSourceObject: {fileID: 8916053333276471034, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2641014382255016037}
+      addedObject: {fileID: 7383813723855663151}
   m_SourcePrefab: {fileID: 100100000, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
 --- !u!1 &862253121827337133 stripped
 GameObject:
@@ -425,9 +440,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc65f322800147d6a1bdc624638abe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windowAnimation: {fileID: 0}
+  _windowAnimation: {fileID: 7383813723855663151}
   _windowContent: {fileID: 862253121827337133}
---- !u!114 &2641014382255016037
+  _exitButton: {fileID: 4501258785383421668}
+--- !u!114 &7383813723855663151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,16 +452,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2703593793406006373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766d459ceb1cdf649939bb3fed432721, type: 3}
+  m_Script: {fileID: 11500000, guid: f621ba7818b947c3a5677539ab0eceaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 0}
-  _animationDuration: 0.3
-  _animationStartScale: {x: 0.5, y: 0.5, z: 0.5}
-  _openEase: 27
-  _closeEase: 26
-  _canvasGroup: {fileID: 0}
-  _openFadeDuration: 0.1
 --- !u!224 &2736571162171217928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8918103106667987607, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}

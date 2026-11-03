@@ -11,13 +11,13 @@ namespace _Project.Scripts.UI.Windows.MainMenu
     {
         public event Action OnWindowDestroy;
         public event Action OnPlayButtonClicked;
+        public event Action OnOnlineButtonClicked;
         public event Action OnSettingsButtonClicked;
-        public event Action OnShopButtonClicked;
         public event Action OnExitButtonClicked;
         
         [SerializeField] private Button _playButton;
+        [SerializeField] private Button _onlineButton;
         [SerializeField] private Button _settingsButton;
-        [SerializeField] private Button _shopButton;
         [SerializeField] private Button _exitButton;
         
         [Header("Audio")]
@@ -32,8 +32,8 @@ namespace _Project.Scripts.UI.Windows.MainMenu
         public void Initialize()
         {
             _playButton.onClick.AddListener(InvokeOnPlayButtonClicked);
+            _onlineButton.onClick.AddListener(InvokeOnOnlineButtonClicked);
             _settingsButton.onClick.AddListener(InvokeOnSettingsButtonClicked);
-            _shopButton.onClick.AddListener(InvokeOnShopButtonClicked);
             _exitButton.onClick.AddListener(InvokeOnExitButtonClicked);
         }
         
@@ -41,8 +41,8 @@ namespace _Project.Scripts.UI.Windows.MainMenu
         {
             OnWindowDestroy?.Invoke();
             _playButton.onClick.RemoveListener(InvokeOnPlayButtonClicked);
+            _onlineButton.onClick.RemoveListener(InvokeOnOnlineButtonClicked);
             _settingsButton.onClick.RemoveListener(InvokeOnSettingsButtonClicked);
-            _shopButton.onClick.RemoveListener(InvokeOnShopButtonClicked);
             _exitButton.onClick.RemoveListener(InvokeOnExitButtonClicked);
         }
         
@@ -54,11 +54,11 @@ namespace _Project.Scripts.UI.Windows.MainMenu
 
         private void InvokeOnSettingsButtonClicked() => 
             OnSettingsButtonClicked?.Invoke();
-
-        private void InvokeOnShopButtonClicked() => 
-            OnShopButtonClicked?.Invoke();
         
         private void InvokeOnExitButtonClicked() => 
             OnExitButtonClicked?.Invoke();
+        
+        private void InvokeOnOnlineButtonClicked() => 
+            OnOnlineButtonClicked?.Invoke();
     }
 }

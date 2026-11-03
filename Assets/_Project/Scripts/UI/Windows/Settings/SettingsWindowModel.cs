@@ -14,8 +14,7 @@ namespace _Project.Scripts.UI.Windows.Settings
         
         public AudioSettingsData AudioSettingsData => _progressService.PlayerProgress.AudioSettingsData;
         
-        private SettingsWindowModel(ProgressService progressService, 
-            [Inject(Id = SaveType.Coordinator)] ISaveLoadService saveService)
+        private SettingsWindowModel(ProgressService progressService, ISaveLoadService saveService)
         {
             _saveService = saveService;
             _progressService = progressService;

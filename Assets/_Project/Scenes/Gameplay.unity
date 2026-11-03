@@ -249,8 +249,7 @@ MonoBehaviour:
   _dynamicObjectsParent: {fileID: 1709303259}
   _uiParent: {fileID: 2046716228}
   _gameParent: {fileID: 1485497335}
-  _enemySpawnPoint: {fileID: 1760856298}
-  _gameplayMusic: {fileID: 8300000, guid: dda1e9c3317e0704bb9fe835cf30501f, type: 3}
+  _gameplayMusic: {fileID: 8300000, guid: fa388fee3ee48cb4b82a1dfa3b19fa4d, type: 3}
 --- !u!4 &422285789
 Transform:
   m_ObjectHideFlags: 0

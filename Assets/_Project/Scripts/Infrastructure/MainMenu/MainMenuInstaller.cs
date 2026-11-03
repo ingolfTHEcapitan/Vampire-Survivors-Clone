@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Tools;
 using _Project.Scripts.UI.Windows.MainMenu;
+using _Project.Scripts.UI.Windows.Online;
 using _Project.Scripts.UI.Windows.Settings;
 using UnityEngine;
 using Zenject;
@@ -13,6 +14,7 @@ namespace _Project.Scripts.Infrastructure.MainMenu
         public override void InstallBindings()
         {
             BindSettingsWindow();
+            BindOnlineWindow();
             BindMainMenuWindow();
             BindMainMenuBootstrapper();
         }
@@ -22,6 +24,13 @@ namespace _Project.Scripts.Infrastructure.MainMenu
             Container.BindWindow<SettingsWindowView>();
             Container.BindInterfacesAndSelfTo<SettingsWindowModel>().AsSingle();
             Container.Bind<SettingsWindowPresenter>().AsSingle();
+        }
+
+        private void BindOnlineWindow()
+        {
+            Container.BindWindow<OnlineWindowView>();
+            Container.Bind<OnlineWindowModel>().AsSingle();
+            Container.Bind<OnlineWindowPresenter>().AsSingle();
         }
 
         private void BindMainMenuWindow()

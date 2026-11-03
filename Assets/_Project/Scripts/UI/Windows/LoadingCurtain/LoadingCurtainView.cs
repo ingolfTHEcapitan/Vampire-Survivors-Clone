@@ -1,5 +1,4 @@
 using System;
-using _Project.Scripts.Services;
 using _Project.Scripts.Services.Audio;
 using UnityEngine;
 using Zenject;
@@ -10,11 +9,7 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
     {
         public event Action OnWindowDestroy;
         
-        [SerializeField] private GameObject _loadingIndicator;
-        [SerializeField] private float _indicatorRotationSpeed = 100f;
-        
-        [Header("Audio")]
-        [SerializeField] private AudioClip _loadingMusic;
+        [SerializeField] private Animator _loadingBarAnimator;
         
         private IMusicService _audioService;
 
@@ -31,16 +26,13 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
         public void Open()
         {
             gameObject.SetActive(true);
-            _audioService.PlayMusic(_loadingMusic);
+            _loadingBarAnimator.enabled = true;
         }
 
-        public void Close() => 
+        public void Close()
+        {
             gameObject.SetActive(false);
-
-        private void Update() => 
-            AnimateLoadingIndicator();
-
-        private void AnimateLoadingIndicator() => 
-            _loadingIndicator.transform.Rotate(Vector3.forward, Time.deltaTime * _indicatorRotationSpeed);
+            _loadingBarAnimator.enabled = false;
+        }
     }
 }

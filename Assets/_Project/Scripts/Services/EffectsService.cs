@@ -16,9 +16,10 @@ namespace _Project.Scripts.Services
             _container = container;
         }
 
-        public async UniTask WarmUpAsync()
+        public UniTask WarmUpAsync()
         {
             //await _assetProvider.LoadAsync<GameObject>(AssetAddress.HitFx);
+            return UniTask.CompletedTask;
         }
 
         /*public async UniTask PlayHitFxAsync(Vector3 position, Transform parent)

@@ -7,6 +7,7 @@ namespace _Project.Scripts.Infrastructure.AssetManagement
         public const string LoadingCurtain = "LoadingCurtain";
         public const string MainMenuWindow = "MainMenuWindow";
         public const string SettingsWindow = "SettingsWindow";
+        public const string OnlineWindow = "OnlineWindow";
         public const string Player = "Player";
     }
 }

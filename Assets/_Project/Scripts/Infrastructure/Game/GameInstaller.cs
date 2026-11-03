@@ -17,7 +17,6 @@ namespace _Project.Scripts.Infrastructure.Game
         [SerializeField] private Transform _dynamicObjectsParent;
         [SerializeField] private Transform _uiParent;
         [SerializeField] private Transform _gameParent;
-        [SerializeField] private Transform _enemySpawnPoint;
         
         [Header("Audio")]
         [SerializeField] private AudioClip _gameplayMusic;
@@ -65,7 +64,7 @@ namespace _Project.Scripts.Infrastructure.Game
         private void BindGame()
         {
             Container.Bind<GameUIInitializer>().AsSingle().WithArguments(_uiParent);
-            Container.BindInterfacesAndSelfTo<GameBootstrapper>().AsSingle().WithArguments(_enemySpawnPoint, _gameplayMusic);
+            Container.BindInterfacesAndSelfTo<GameBootstrapper>().AsSingle().WithArguments(_gameplayMusic);
         }
         
         private PlayerContainer GetPlayer(InjectContext context) => 

@@ -1,5 +1,6 @@
 using _Project.Scripts.UI.Common;
 using _Project.Scripts.UI.Windows.LoadingCurtain;
+using _Project.Scripts.UI.Windows.Online;
 using _Project.Scripts.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -12,15 +13,17 @@ namespace _Project.Scripts.UI.Windows.MainMenu
         private readonly MainMenuWindowModel _model;
         private readonly LoadingCurtainPresenter _loadingCurtainPresenter;
         private readonly SettingsWindowPresenter _settingsWindowPresenter;
+        private readonly OnlineWindowPresenter _onlineWindowPresenter;
         private readonly CursorController _cursorController;
         
         public MainMenuWindowPresenter(MainMenuWindowView view, MainMenuWindowModel model, LoadingCurtainPresenter loadingCurtainPresenter,
-            SettingsWindowPresenter settingsWindowPresenter, CursorController cursorController)
+            SettingsWindowPresenter settingsWindowPresenter, OnlineWindowPresenter onlineWindowPresenter, CursorController cursorController)
         {
             _view = view;
             _model = model;
             _loadingCurtainPresenter = loadingCurtainPresenter;
             _settingsWindowPresenter = settingsWindowPresenter;
+            _onlineWindowPresenter = onlineWindowPresenter;
             _cursorController = cursorController;
         }
 
@@ -30,8 +33,9 @@ namespace _Project.Scripts.UI.Windows.MainMenu
             _view.OnWindowDestroy += CleanUp;
             _view.OnPlayButtonClicked += StartGame;
             _view.OnSettingsButtonClicked += OpenSettingsWindow;
+            _view.OnOnlineButtonClicked += OpenOnlineWidow;
             _view.OnExitButtonClicked += ExitGame;
-            
+
             _view.PlayBackgroundMusic();
             _cursorController.SetCursorVisible(true);
         }
@@ -41,6 +45,7 @@ namespace _Project.Scripts.UI.Windows.MainMenu
             _view.OnWindowDestroy -= CleanUp;
             _view.OnPlayButtonClicked -= StartGame;
             _view.OnSettingsButtonClicked -= OpenSettingsWindow;
+            _view.OnOnlineButtonClicked -= OpenOnlineWidow;
             _view.OnExitButtonClicked -= ExitGame;
         }
 
@@ -53,7 +58,10 @@ namespace _Project.Scripts.UI.Windows.MainMenu
 
         private void OpenSettingsWindow() => 
             _settingsWindowPresenter.OpenAsync().Forget(Debug.LogError);
-        
+
+        private void OpenOnlineWidow() => 
+            _onlineWindowPresenter.OpenAsync().Forget(Debug.LogError);
+
         private void ExitGame() => 
             _model.ExitGame();
     }

@@ -1,7 +1,8 @@
 ﻿using System;
-using _Project.Scripts.UI.Common;
+using _Project.Scripts.UI.Common.WindowAnimations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Project.Scripts.UI.Windows.GameOver
@@ -9,28 +10,23 @@ namespace _Project.Scripts.UI.Windows.GameOver
     public class GameOverWindowView : MonoBehaviour, IWindow
     {
         public event Action OnWindowDestroy;
-        public event Action OnReviveButtonClicked;
-        public event Action OnLoadSaveButtonClicked;
+        public event Action OnExitButtonClicked;
         
-        [SerializeField] private WindowPopupAnimation _windowAnimation;
+        [SerializeField] private WindowAnimationBase _windowAnimation;
         [Space]
         [SerializeField] private GameObject _windowContent;
-        [SerializeField] private Button _reviveButton;
-        [SerializeField] private Button _loadSaveButton;
+        [SerializeField] private Button _exitButton;
 
         public void Initialize()
         {
             _windowContent.SetActive(false);
-            
-            _reviveButton.onClick.AddListener(InvokeOnReviveButtonClicked);
-            _loadSaveButton.onClick.AddListener(InvokeOnLoadSaveButtonClicked);
+            _exitButton.onClick.AddListener(InvokeOnExitButtonClicked);
         }
         
         private void OnDestroy()
         {
             OnWindowDestroy?.Invoke();
-            _reviveButton.onClick.RemoveListener(InvokeOnReviveButtonClicked);
-            _loadSaveButton.onClick.RemoveListener(InvokeOnLoadSaveButtonClicked);
+            _exitButton.onClick.RemoveListener(InvokeOnExitButtonClicked);
         }
         
         public async UniTask OpenAsync()
@@ -38,9 +34,6 @@ namespace _Project.Scripts.UI.Windows.GameOver
             _windowContent.SetActive(true);
             await _windowAnimation.AnimateOpenAsync();
         }
-
-        public void UpdateReviveButtonState(bool state) => 
-            _reviveButton.interactable = state;
         
         public async UniTask CloseAsync()
         {
@@ -48,10 +41,7 @@ namespace _Project.Scripts.UI.Windows.GameOver
             _windowContent.SetActive(false);
         }
         
-        private void InvokeOnReviveButtonClicked() => 
-            OnReviveButtonClicked?.Invoke();
-
-        private void InvokeOnLoadSaveButtonClicked() => 
-            OnLoadSaveButtonClicked?.Invoke();
+        private void InvokeOnExitButtonClicked() => 
+            OnExitButtonClicked?.Invoke();
     }
 }

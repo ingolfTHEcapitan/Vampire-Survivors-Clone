@@ -1,5 +1,6 @@
 ﻿using System;
 using _Project.Scripts.UI.Common;
+using _Project.Scripts.UI.Common.WindowAnimations;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -18,7 +19,7 @@ namespace _Project.Scripts.UI.Windows.Settings
         public event Action<float> OnEffectsVolumeChanged;
         public event Action<float> OnUIVolumeChanged; 
         
-        [SerializeField] private WindowPopupAnimation _windowAnimation;
+        [SerializeField] private WindowAnimationBase _windowAnimation;
         [Space]
         [SerializeField] private GameObject _windowContent;
         [SerializeField] private Button _closeButton;
