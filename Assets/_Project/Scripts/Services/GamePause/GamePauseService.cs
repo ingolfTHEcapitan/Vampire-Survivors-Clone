@@ -5,9 +5,10 @@ using Zenject;
 
 namespace _Project.Scripts.Services.GamePause
 {
-    public class GamePauseService : IGamePauseService, ITickable
+    public class GamePauseService : IGamePauseService, ITickable, IFixedTickable
     {
         public event Action OnPausableUpdate;
+        public event Action OnPausableFixedUpdate;
         
         private readonly List<IPauseHandler> _handlers = new List<IPauseHandler>();
 
@@ -33,6 +34,14 @@ namespace _Project.Scripts.Services.GamePause
                 return;
             
             OnPausableUpdate?.Invoke();
+        }
+
+        public void FixedTick()
+        {
+            if (IsPaused)
+                return;
+            
+            OnPausableFixedUpdate?.Invoke();
         }
     }
 }

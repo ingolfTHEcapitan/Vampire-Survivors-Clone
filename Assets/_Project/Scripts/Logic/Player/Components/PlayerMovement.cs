@@ -7,14 +7,15 @@ namespace _Project.Scripts.Logic.Player.Components
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Rigidbody2D _rigidbody2D;
         [Header("Settings")]
         [SerializeField] private float _speed = 5f;
 
-        private Vector3 _movementDirection;
         private IGamePauseService _pauseService;
         private IInputService _inputService;
-        
+        private Vector2 _movementDirection;
+        private Vector2 _movementInput;
+
         [Inject]
         private void Construct(IGamePauseService pauseService, IInputService inputService)
         {
@@ -22,26 +23,32 @@ namespace _Project.Scripts.Logic.Player.Components
             _inputService = inputService;
         }
 
-        private void Start() => 
+        private void Start()
+        {
             _pauseService.OnPausableUpdate += PausableUpdate;
-
+            _pauseService.OnPausableFixedUpdate += PausableFixedUpdate;
+        }
+        
         private void OnDestroy()
         {
             _pauseService.OnPausableUpdate -= PausableUpdate;
+            _pauseService.OnPausableFixedUpdate -= PausableFixedUpdate;
         }
 
         private void PausableUpdate()
         {
-            Vector2 movementInput = _inputService.GetMovementAxis();
-            Move(movementInput);
+            Debug.Log("Raw input " + _inputService.GetMovementAxis());
+            Debug.Log("Norm input " + _inputService.GetMovementAxis().normalized);
+            _movementInput = _inputService.GetMovementAxis();
         }
+
+        private void PausableFixedUpdate() => 
+            Move(_movementInput);
 
         private void Move(Vector2 axis)
         {
-            _movementDirection = new Vector3(axis.x * _speed, _movementDirection.y, axis.y * _speed);
-            _movementDirection = transform.TransformDirection(_movementDirection);
-            
-            _characterController.Move(_movementDirection * Time.deltaTime);
+            _movementDirection = new Vector2(axis.x * _speed, axis.y * _speed);
+            _rigidbody2D.MovePosition(_rigidbody2D.position +  _movementDirection * Time.fixedDeltaTime);
         }
     }
 }

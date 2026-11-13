@@ -6,7 +6,6 @@ namespace _Project.Scripts.Logic.Player
 {
     public class PlayerContainer: MonoBehaviour
     {
-        [field: SerializeField] public Camera Camera { get; private set; }
         [field: SerializeField] public PlayerVisuals Visuals { get; private set; }
         [field: SerializeField] public PlayerDeath PlayerDeath { get; private set; }
         [field: SerializeField] public PlayerMovement Movement { get; private set; }
