@@ -53,7 +53,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58740705484e4799b5f9368dd6c572e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Camera>k__BackingField: {fileID: 0}
   <Visuals>k__BackingField: {fileID: 6774272927575840031}
   <PlayerDeath>k__BackingField: {fileID: 7341794655300860022}
   <Movement>k__BackingField: {fileID: 7795851549087658766}
@@ -70,7 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9a38a27f0649bf95aa0404d12cb3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 8349620543082659946}
   _health: {fileID: 5731431232808421805}
+  _movement: {fileID: 7795851549087658766}
   _playerAudioSource: {fileID: 6824860918327923091}
   _deathSound: {fileID: 8300000, guid: 7998e5fbeddd7e64ab0174f0227d8236, type: 3}
   _healSound: {fileID: 8300000, guid: 7f0b26dda2e24b747a57a9a43f0b064a, type: 3}
@@ -343,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1177398900210332811}
   m_Layer: 0
-  m_Name: Visulal
+  m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

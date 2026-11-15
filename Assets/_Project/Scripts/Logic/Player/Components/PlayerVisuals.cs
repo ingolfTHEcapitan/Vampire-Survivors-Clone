@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Project.Scripts.Logic.Common;
 using _Project.Scripts.Services;
@@ -10,9 +11,14 @@ namespace _Project.Scripts.Logic.Player.Components
     public class PlayerVisuals : MonoBehaviour
     {
         private const float DeathSoundDelay = 0.2f;
+        private static readonly int Speed = Animator.StringToHash("Speed");
+        private static readonly int TakeHit = Animator.StringToHash("TakeHit");
+        private static readonly int Died = Animator.StringToHash("Died");
         
         [Header("Components")]
+        [SerializeField] private Animator _animator;
         [SerializeField] private Health _health;
+        [SerializeField] private PlayerMovement _movement;
 
         [Header("Audio")]
         [SerializeField] private AudioSource _playerAudioSource;
@@ -34,17 +40,30 @@ namespace _Project.Scripts.Logic.Player.Components
         public void Initialize()
         {
             _health.OnZeroHealth += PlayDeathSound;
+            _health.OnZeroHealth += PlayDeathAnimation;
             _health.OnTakeDamage += PlayDamageSound;
+            _health.OnTakeDamage += PlayDamageAnimation;
             _health.OnTakeHeal += PlayHealSound;
         }
 
         private void OnDestroy()
         {
             _health.OnZeroHealth -= PlayDeathSound;
+            _health.OnZeroHealth -= PlayDeathAnimation;
             _health.OnTakeDamage -= PlayDamageSound;
+            _health.OnTakeDamage -= PlayDamageAnimation;
             _health.OnTakeHeal -= PlayHealSound;
         }
         
+        private void Update() => 
+            _animator.SetFloat(Speed, _movement.Velocity.magnitude);
+
+        private void PlayDamageAnimation() => 
+            _animator.SetTrigger(TakeHit);
+
+        private void PlayDeathAnimation() => 
+            _animator.SetTrigger(Died);
+
         private void PlayDeathSound() => 
             _audioService.PlayDelayed(_deathSound, _playerAudioSource, DeathSoundDelay);
 

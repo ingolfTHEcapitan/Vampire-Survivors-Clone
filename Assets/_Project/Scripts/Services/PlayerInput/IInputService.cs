@@ -8,8 +8,8 @@ namespace _Project.Scripts.Services.PlayerInput
     {
         event Action OnOpenStatsButtonPressed;
         event Action OnMainMenuButtonPressed;
-        
         Vector2 GetMovementAxis();
+        Vector2 GetMovementAxisRaw();
         Vector2 GetLookAxis();
         bool IsFireButtonPressed();
         bool IsOpenStatsButtonPressed();

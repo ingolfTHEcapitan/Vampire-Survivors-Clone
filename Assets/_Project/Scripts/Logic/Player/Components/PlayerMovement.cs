@@ -14,7 +14,7 @@ namespace _Project.Scripts.Logic.Player.Components
         private IGamePauseService _pauseService;
         private IInputService _inputService;
         private Vector2 _movementDirection;
-        private Vector2 _movementInput;
+        public Vector2 Velocity { get; private set; }
 
         [Inject]
         private void Construct(IGamePauseService pauseService, IInputService inputService)
@@ -35,15 +35,11 @@ namespace _Project.Scripts.Logic.Player.Components
             _pauseService.OnPausableFixedUpdate -= PausableFixedUpdate;
         }
 
-        private void PausableUpdate()
-        {
-            Debug.Log("Raw input " + _inputService.GetMovementAxis());
-            Debug.Log("Norm input " + _inputService.GetMovementAxis().normalized);
-            _movementInput = _inputService.GetMovementAxis();
-        }
+        private void PausableUpdate() => 
+            Velocity = _inputService.GetMovementAxisRaw().normalized;
 
         private void PausableFixedUpdate() => 
-            Move(_movementInput);
+            Move(Velocity);
 
         private void Move(Vector2 axis)
         {
