@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2665950215593899297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624950584169169187}
+  m_Layer: 0
+  m_Name: JoysticArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &624950584169169187
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665950215593899297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8522216136845584069}
+  m_Father: {fileID: 7777378888170250433}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1165793908245029462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,6 +134,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8918103106667987607, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3222293692496381526}
+    - targetCorrespondingSourceObject: {fileID: 8918103106667987607, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 624950584169169187}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8916053333276471034, guid: 89251d2c3e1dd5746908713d8971b067, type: 3}
       insertIndex: -1
@@ -247,3 +286,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67ef60674124a449f98dd10548b0044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &7156753196180213858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 624950584169169187}
+    m_Modifications:
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589528598568284875, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: m_Name
+      value: Joystick White
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701322818082271699, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+      propertyPath: dynamicJoystickMovementArea
+      value: 
+      objectReference: {fileID: 624950584169169187}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+--- !u!224 &8522216136845584069 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1519150623008683687, guid: f1b24fb638937fa4f8a8ef9dad51743e, type: 3}
+  m_PrefabInstance: {fileID: 7156753196180213858}
+  m_PrefabAsset: {fileID: 0}

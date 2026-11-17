@@ -3,7 +3,7 @@ using _Project.Scripts.Configs.Spawners;
 using _Project.Scripts.Infrastructure.AssetManagement;
 using _Project.Scripts.Services;
 using _Project.Scripts.Services.Audio;
-using _Project.Scripts.Services.PlayerInput;
+using _Project.Scripts.Services.Input;
 using _Project.Scripts.Services.SaveLoad;
 using _Project.Scripts.Services.SaveLoad.LocalSave;
 using _Project.Scripts.Services.SceneLoader;

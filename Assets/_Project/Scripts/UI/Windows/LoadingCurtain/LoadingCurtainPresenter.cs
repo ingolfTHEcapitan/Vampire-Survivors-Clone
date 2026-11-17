@@ -19,7 +19,10 @@ namespace _Project.Scripts.UI.Windows.LoadingCurtain
             _cursorController.SetCursorVisible(false);
         }
 
-        public void HideLoading() => 
+        public void HideLoading()
+        {
             _view.Close();
+            _cursorController.SetCursorVisible(true);
+        }
     }
 }

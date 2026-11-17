@@ -1,5 +1,5 @@
 using _Project.Scripts.Services.GamePause;
-using _Project.Scripts.Services.PlayerInput;
+using _Project.Scripts.Services.Input;
 using UnityEngine;
 using Zenject;
 
